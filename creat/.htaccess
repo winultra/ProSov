@@ -1,0 +1,52 @@
+AddDefaultCharset utf-8
+AddCharset utf-8 *
+<IfModule mod_charset.c>
+CharsetSourceEnc utf-8
+CharsetDefault utf-8
+</IfModule>
+ErrorDocument 404 /pages-error-404.html
+
+RewriteEngine on
+
+RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
+#RewriteRule ^(.*) https://%1/$1 [R=301,NE,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^(.*)$ $1.php
+
+
+RewriteRule ^history-city-edit$ index.php?page=history-city-edit [L]
+
+RewriteRule ^about-edit$ index.php?page=about-edit [L]
+
+RewriteRule ^interviewguarded$ index.php?page=interviewguarded [L]
+RewriteRule ^interviewguarded-add$ index.php?page=interviewguarded&section=add [L]
+
+RewriteRule ^interview-writer$ index.php?page=interview-writer [L]
+RewriteRule ^interview-writer-add$ index.php?page=interview-writer&section=add [L]
+
+RewriteRule ^interviews-leaders$ index.php?page=interviews-leaders [L]
+RewriteRule ^interviews-leaders-add$ index.php?page=interviews-leaders&section=add [L]
+
+RewriteRule ^how-it-was$ index.php?page=how-it-was [L]
+RewriteRule ^how-it-was-add$ index.php?page=how-it-was&section=add [L]
+RewriteRule ^how-it-was-edit$ index.php?page=how-it-was&section=edit [L]
+
+RewriteRule ^about-authors$ index.php?page=about-authors [L]
+RewriteRule ^about-authors-add$ index.php?page=about-authors&section=add [L]
+
+RewriteRule ^attractions$ index.php?page=attractions [L]
+RewriteRule ^attractions-add$ index.php?page=attractions&section=add [L]
+
+RewriteRule ^particpnts-progect$ index.php?page=particpnts-progect [L]
+RewriteRule ^particpnts-progect-edit([0-9]+)$ index.php?page=particpnts-progect&section=edit&id=$1 [L]
+RewriteRule ^particpnts-progect-add-dev$ index.php?page=particpnts-progect&section=add&rule=dev [L]
+RewriteRule ^particpnts-progect-add-vol$ index.php?page=particpnts-progect&section=add&rule=vol [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !.*\.(ico|gif|jpg|jpeg|png|js|css)
