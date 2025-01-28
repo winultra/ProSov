@@ -1,10 +1,10 @@
 <?php
 // Создаем соединение
 function querydb($query,$qs="select"){
-    $servername = "localhost";
-    $database = "u809094519_s2";
-    $username = "u809094519_s2";
-    $password = "X6i3E7z8";
+    $servername = "ServerIP";
+    $database = "DB_NAME";
+    $username = "USERNAME";
+    $password = "PASSWORD";
     $link = mysqli_connect($servername, $username, $password, $database);
     if (!$link) die("Connection failed: " . mysqli_connect_error());
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
